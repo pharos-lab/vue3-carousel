@@ -1,19 +1,20 @@
 <template>
-    <div class="pl-carousel-slide h-56" v-show="visible">
+    <div class="pl-carousel-slide h-56" v-show="visibles">
         <slot></slot>
     </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { inject, computed, onMounted } from 'vue'
 
-const index = ref(0)
+const currentSlide = inject('currentSlide')
 
 const props = defineProps({
-    visible: {
-        type: Boolean,
-        default: false
-    }
+    index: Number
 })
 
+const visibles = computed(() => {
+    //console.log(props)
+    return props.index == currentSlide.value
+})
 </script>

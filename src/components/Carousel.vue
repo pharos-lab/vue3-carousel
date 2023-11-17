@@ -1,8 +1,8 @@
 <template>
     <section class="pl-carousel relative">
-        <slot :visible="false"></slot>
+        <slot></slot>
 
-        <div class="pl-carousel-prev-slide absolute left-0 h-full w-20 flex items-center justify-center">
+        <div @click="prev" class="pl-carousel-prev-slide absolute left-0 h-full w-20 flex items-center justify-center">
             <ChevronLeftIcon class="w-7 h-7"></ChevronLeftIcon>
         </div>
         <div class="pl-carousel-next-slide absolute right-0 h-full w-20 flex items-center justify-center">
@@ -12,27 +12,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted, useSlots } from 'vue'
+import { ref, onMounted, useSlots, provide } from 'vue'
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/vue/24/solid'
 
 const currentSlide = ref(0)
 const slots = useSlots()
 
+provide('currentSlide', currentSlide)
 
-
-slots.default().forEach((slide, index) => {
-    //console.log(slide)
-})
-
-onMounted(() => {
-    
-    slots.default().forEach((slide, index) => {
-        slide.props.visible = true
-        console.log(slide.props.visible)
-
-    })
-    console.log('slots: ')
-        console.log(slots.default())
-        console.log('end slots-------')
-    })
+function prev() {
+    currentSlide.value++
+}
 </script>

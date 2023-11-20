@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { inject, computed, onMounted } from 'vue'
+import { inject, computed } from 'vue'
 
 const currentSlide = inject('currentSlide')
 const direction = inject('direction')
@@ -15,7 +15,7 @@ const direction = inject('direction')
 
 const props = defineProps({
     index: Number,
-    direction: String
+    direction: String,
 })
 
 const visible = computed(() => {

@@ -8,6 +8,9 @@
         <div @click="next" v-if="props.arrows" class="pl-carousel-next-slide absolute right-0 top-0 h-full w-16 flex items-center justify-center">
             <ChevronRightIcon class="w-7 h-7"></ChevronRightIcon>
         </div>
+        <div class="pl-carousel-bullets absolute bottom-4 flex justify-center w-full gap-4">
+            <button @click="showSlide(n)" v-for="n in slots.length" :key="n" class="pl-carousel-bullet h-5 w-5 rounded-full bg-slate-700/60"></button>
+        </div>
     </section>
 </template>
 
@@ -37,6 +40,11 @@ function prev() {
 function next() {
     direction.value = 'right'
     currentSlide.value == slots.length - 1  ? currentSlide.value = 0 : currentSlide.value++
+}
+
+function showSlide(n) {
+    currentSlide.value > n - 1 ? direction.value = 'left' : direction.value = 'right'
+    currentSlide.value = n - 1
 }
 
 </script>

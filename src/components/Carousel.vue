@@ -2,10 +2,10 @@
     <section class="pl-carousel relative">
         <slot></slot>
 
-        <div @click="prev" class="pl-carousel-prev-slide absolute left-0 h-full w-20 flex items-center justify-center">
+        <div @click="prev" class="pl-carousel-prev-slide absolute left-0 top-0 h-full w-16 flex items-center justify-center">
             <ChevronLeftIcon class="w-7 h-7"></ChevronLeftIcon>
         </div>
-        <div @click="next" class="pl-carousel-next-slide absolute right-0 h-full w-20 flex items-center justify-center">
+        <div @click="next" class="pl-carousel-next-slide absolute right-0 top-0 h-full w-16 flex items-center justify-center">
             <ChevronRightIcon class="w-7 h-7"></ChevronRightIcon>
         </div>
     </section>

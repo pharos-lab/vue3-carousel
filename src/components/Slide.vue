@@ -1,6 +1,6 @@
 <template>
     <transition :name="transition">
-        <div class="pl-carousel-slide h-56 relative" v-show="visible">
+        <div class="pl-carousel-slide" v-show="visible">
             <slot></slot>
         </div>
     </transition>
@@ -29,7 +29,9 @@ const transition = computed(() => {
 </script>
 
 <style scoped>
-
+.pl-carousel-slide {
+    position: relative
+}
 .slide-left-enter-active {
     animation: slideLeftEnter 1s ease-in-out;
 }

@@ -3,14 +3,14 @@
         <slot></slot>
 
         <div @click="prev" v-if="props.arrows" class="pl-carousel-prev-slide">
-            <ChevronLeftIcon class="pl-carousel-prev-slide-arrow w-7 h-7"></ChevronLeftIcon>
+            <ChevronLeftIcon class="pl-carousel-prev-slide-arrow"></ChevronLeftIcon>
         </div>
         <div @click="next" v-if="props.arrows" class="pl-carousel-next-slide">
-            <ChevronRightIcon class="pl-carousel-next-slide-arrow w-7 h-7"></ChevronRightIcon>
+            <ChevronRightIcon class="pl-carousel-next-slide-arrow"></ChevronRightIcon>
         </div>
         <div class="pl-carousel-bullets">
             <button @click="showSlide(n)" v-for="n in slots.length" :key="n"
-                class="pl-carousel-bullet h-5 w-5 rounded-full bg-slate-700/60"></button>
+                class="pl-carousel-bullet"></button>
         </div>
     </section>
 </template>

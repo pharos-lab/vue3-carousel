@@ -2,14 +2,15 @@
     <section class="pl-carousel relative overflow-hidden">
         <slot></slot>
 
-        <div @click="prev" v-if="props.arrows" class="pl-carousel-prev-slide absolute left-0 top-0 h-full w-16 flex items-center justify-center">
-            <ChevronLeftIcon class="w-7 h-7"></ChevronLeftIcon>
+        <div @click="prev" v-if="props.arrows" class="pl-carousel-prev-slide">
+            <ChevronLeftIcon class="pl-carousel-prev-slide-arrow w-7 h-7"></ChevronLeftIcon>
         </div>
-        <div @click="next" v-if="props.arrows" class="pl-carousel-next-slide absolute right-0 top-0 h-full w-16 flex items-center justify-center">
-            <ChevronRightIcon class="w-7 h-7"></ChevronRightIcon>
+        <div @click="next" v-if="props.arrows" class="pl-carousel-next-slide">
+            <ChevronRightIcon class="pl-carousel-next-slide-arrow w-7 h-7"></ChevronRightIcon>
         </div>
-        <div class="pl-carousel-bullets absolute bottom-4 flex justify-center w-full gap-4">
-            <button @click="showSlide(n)" v-for="n in slots.length" :key="n" class="pl-carousel-bullet h-5 w-5 rounded-full bg-slate-700/60"></button>
+        <div class="pl-carousel-bullets">
+            <button @click="showSlide(n)" v-for="n in slots.length" :key="n"
+                class="pl-carousel-bullet h-5 w-5 rounded-full bg-slate-700/60"></button>
         </div>
     </section>
 </template>
@@ -39,7 +40,7 @@ function prev() {
 
 function next() {
     direction.value = 'right'
-    currentSlide.value == slots.length - 1  ? currentSlide.value = 0 : currentSlide.value++
+    currentSlide.value == slots.length - 1 ? currentSlide.value = 0 : currentSlide.value++
 }
 
 function showSlide(n) {
@@ -48,3 +49,49 @@ function showSlide(n) {
 }
 
 </script>
+
+<style scoped>
+.pl-carousel {
+    position: relative;
+    overflow: hidden
+}
+
+.pl-carousel-prev-slide,
+.pl-carousel-next-slide {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px
+}
+
+.pl-carousel-prev-slide {
+    left: 0
+}
+
+.pl-carousel-next-slide {
+    right: 0
+}
+
+.pl-carousel-bullets {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.pl-carousel-bullet {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: rgba(51, 65, 85, .7)
+}
+.pl-carousel-prev-slide-arrow, .pl-carousel-next-slide-arrow {
+    width: 30px;
+    height: 30px;
+}
+</style>
